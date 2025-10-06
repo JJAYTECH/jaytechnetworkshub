@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JayTech Networks Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a, #1e1e1e);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px; /* improved spacing for nav */
+    }
+
+    nav img {
+      width: 80px; /* increased logo size */
+      height: auto;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00bcd4;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
+      background: url('images/hero-sample.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); /* overlay for better visibility */
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      background: rgba(0,0,0,0.35);
+      padding: 25px 30px;
+      border-radius: 15px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      color: #00bcd4;
+      text-shadow: 0 0 15px #00bcd4;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    .contact-hero p {
+      font-size: 1em;
+      margin: 5px 0;
+    }
+
+    .contact-hero a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .contact-hero a:hover {
+      color: #00bcd4;
+    }
+
+    .social-link {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 5px 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .social-link:hover {
+      background: rgba(0,188,212,0.2);
+      color: #00bcd4;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+
+    section {
+      padding: 100px 40px;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 60px;
+      color: #00bcd4;
+      text-shadow: 0 0 10px #00bcd4;
+    }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .service {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .service img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .service h3 {
+      margin-bottom: 10px;
+      color: #00bcd4;
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #00e676;
+      margin-bottom: 10px;
+    }
+
+    .stars {
+      color: #ffca28;
+      margin-bottom: 5px;
+    }
+
+    .comment {
+      color: #ccc;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 10px 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.2em;
+      }
+
+      .hero p {
+        font-size: 1em;
+      }
+
+      .contact-hero p {
+        font-size: 0.9em;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <img src="images/logo.png" alt="JayTech Logo">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>JayTech Networks Hub</h1>
+      <p>Advanced Technology | Smart Solutions | Custom Services</p>
+      <div class="contact-hero">
+        <p>📞 <a href="tel:09635205869">0963-520-5869</a> | 📧 <a href="mailto:jayrcanete123@gmail.com">jayrcanete123@gmail.com</a> | 📍 Japitan, Barili, Cebu</p>
+        <p>
+          <a href="https://www.facebook.com/bordz.jay.119011" target="_blank" class="social-link">🔵 Facebook: JayR Cañete</a> | 
+          <a href="https://github.com/JJAYTECH" target="_blank" class="social-link">🐱 GitHub: JJAYTECH</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <p style="text-align:center;max-width:800px;margin:auto;color:#ccc;">
+      JayTech Networks Hub offers advanced solutions for Arduino projects, automation, network configuration, and digital services. 
+      We are also open for custom print jobs like t-shirts, stickers, IDs, and more — perfect for both personal and business needs. 
+      Contact us anytime for inquiries or custom projects, we ensure fast response and reliable service.
+    </p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services">
+      <div class="service">
+        <img src="images/arduino1.jfif" alt="Arduino Robotics">
+        <h3>Arduino Robotics & Automation (ESP32)</h3>
+        <p>Programming and installation with advanced configuration.</p>
+      </div>
+      <div class="service">
+        <img src="images/piso-wifi.jpg" alt="Piso Wifi">
+        <h3>Piso WiFi Repair & Selling</h3>
+        <p>We repair, sell, and configure Piso WiFi units for business use.</p>
+      </div>
+      <div class="service">
+        <img src="images/pisonet.jpg" alt="Pisonet">
+        <h3>Pisonet Maintenance & Installer</h3>
+        <p>Reliable Pisonet installation and maintenance for your shop.</p>
+      </div>
+      <div class="service">
+        <img src="images/plate.jpg" alt="Plate Number">
+        <h3>Plate Number (Motorcycle)</h3>
+        <p>Custom-made designs for motorcycles with protective coating.</p>
+      </div>
+      <div class="service">
+        <img src="images/tshirt.jpg" alt="T-Shirt Printing">
+        <h3>T-Shirt Printing Sublimation</h3>
+        <p>Start price ₱130 | Open for rush orders.</p>
+      </div>
+      <div class="service">
+        <img src="images/pvc.jpg" alt="PVC ID">
+        <h3>PVC ID Printing</h3>
+        <p>High-quality PVC ID with lamination for school or business.</p>
+      </div>
+      <div class="service">
+        <img src="images/laminate.jpg" alt="Laminate">
+        <h3>Laminate Service</h3>
+        <p>Protect and preserve your important documents or photos.</p>
+      </div>
+      <div class="service">
+        <img src="images/sticker.jpg" alt="Sticker">
+        <h3>Sticker & Decal Customize</h3>
+        <p>Custom designs for stickers, labels, and decals.</p>
+      </div>
+      <div class="service">
+        <img src="images/phototile-a4.jpg" alt="PhotoTile">
+        <h3>PhotoTile (Sintra Board)</h3>
+        <p>Display your memories with durable photo tile boards.</p>
+      </div>
+      <div class="service">
+        <img src="images/dji.jpg" alt="dji">
+        <h3>Professional Drone Pilot</h3>
+        <p>Licensed drone pilot for aerial photography and inspection.</p>
+      </div>
+      <div class="service">
+        <img src="images/server.jpg" alt="Server">
+        <h3>Server & Client Installation</h3>
+        <p>Complete setup and configuration for small businesses.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Available Projects & Pricing</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="images/repair1.jfif" alt="Arduino Project">
+        <h3>Smart Home System</h3>
+        <p class="price">₱2,500</p>
+        <p class="stars">★★★★★</p>
+        <p class="comment">"Nindot kaayo, dali ra i-control gamit mobile app!"</p>
+      </div>
+      <div class="project-card">
+        <img src="images/repair2.jfif" alt="Piso Wifi">
+        <h3>Piso WiFi Complete Setup</h3>
+        <p class="price">₱4,000</p>
+        <p class="stars">★★★★☆</p>
+        <p class="comment">"Pas-pas ug signal, maayo ang serbisyo!"</p>
+      </div>
+      <div class="project-card">
+        <img src="images/repair4.jfif" alt="Pisonet">
+        <h3>Pisonet Cabinet + PC</h3>
+        <p class="price">₱5,500</p>
+        <p class="stars">★★★★★</p>
+        <p class="comment">"Satisfied customer! Sulit kaayo ang presyo."</p>
+      </div>
+      <div class="project-card">
+        <img src="images/repair5.jfif" alt="Battery Charging Station">
+        <h3>Coin Operated Charger</h3>
+        <p class="price">₱3,200</p>
+        <p class="stars">★★★★☆</p>
+        <p class="comment">"Works perfectly, maayo ang build quality!"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact">
+      <p>📞 Phone: <a href="tel:09635205869">0963-520-5869</a></p>
+      <p>📧 Email: <a href="mailto:jayrcanete123@gmail.com">jayrcanete123@gmail.com</a></p>
+      <p>📍 Location: Japitan, Barili, Cebu</p>
+      <p>FB: <a href="https://www.facebook.com/bordz.jay.119011" target="_blank" style="color:#00bcd4;">JayR Cañete</a> | GitHub: <a href="https://github.com/JJAYTECH" target="_blank" style="color:#00bcd4;">JJAYTECH</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 JayTech Networks Hub | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
